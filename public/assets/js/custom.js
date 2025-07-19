@@ -32,5 +32,5 @@ const backToTopBtn = document.getElementById('backToTopBtn');
     });
 
 
-    // backend
+    // animation on scroll
     
