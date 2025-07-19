@@ -98,7 +98,7 @@
 
             <div class="row gap-20">
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="skills-item p-3 text-center shine-effect" data-aos="fade-up" data-aos-duration="2000">
+                    <div class="skills-item p-3 text-center shine-effect border-animate" data-aos="fade-up" data-aos-duration="2000">
                         <p class="mb-0"><i class="fa-brands fa-html5"></i> HTML</p>
                     </div>
                 </div>
@@ -149,7 +149,7 @@
                 <!-- Card 1 -->
                 <div class="col-lg-6">
                     <div class="project-card p-3" data-aos="fade-up" data-aos-duration="2000">
-                        <div class="project-image-wrapper">
+                        <div class="project-image-wrapper ">
                             <img src="assets/img/homlead.svg" class="project-image" alt="HomeLead" width="100%"
                                 height="100%">
                             <div class="icon-overlay">
@@ -491,6 +491,15 @@
     <div class="return-button" id="backToTopBtn">
         <i class="fas fa-arrow-up"></i>
     </div>
+   <div id="preloader">
+  <div class="loader">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+
     <footer class="footer">
         <div class="social-icons">
             <a class="github" href="https://github.com/Md-Afjal-1" target="_blank"><i
@@ -572,6 +581,21 @@
     <script>
         AOS.init();
     </script>
+   <script>
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const preloader = document.getElementById('preloader');
+      preloader.style.opacity = '0';
+      preloader.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 500);
+    }, 4000); 
+  });
+</script>
+
+
+
 </body>
 
 </html>
