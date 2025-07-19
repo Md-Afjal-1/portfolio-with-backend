@@ -491,13 +491,6 @@
     <div class="return-button" id="backToTopBtn">
         <i class="fas fa-arrow-up"></i>
     </div>
-   <div id="preloader">
-  <div class="loader">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
 
 
     <footer class="footer">
@@ -581,20 +574,6 @@
     <script>
         AOS.init();
     </script>
-   <script>
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const preloader = document.getElementById('preloader');
-      preloader.style.opacity = '0';
-      preloader.style.transition = 'opacity 0.5s ease';
-      setTimeout(() => {
-        preloader.style.display = 'none';
-      }, 500);
-    }, 4000); 
-  });
-</script>
-
-
 
 </body>
 
