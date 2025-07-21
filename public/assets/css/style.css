@@ -263,6 +263,9 @@ nav {
 .skills-head {
   margin-bottom: 36px;
 }
+.skills-heading{
+  font-size: 20px;
+}
 
 .skills-item {
   border: 1px solid #0275d8;
@@ -809,5 +812,6 @@ nav {
   justify-content: center;
   z-index: 9999;
 }
+
 
 
