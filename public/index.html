@@ -42,25 +42,25 @@
     <!-- Home section -->
     <div class="overflow-hidden">
 
+        <section class="hero-section">
+            <div class="hero-glow"></div>
 
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 ">
-                        <div class="home-content d-flex flex-column justify-content-center align-items-center ">
-                            <h1 data-aos="fade-down" data-aos-duration="2000">Md Afjal</h1>
-                            <p data-aos="fade-right" data-aos-duration="2000">Front-End Developer</p>
-                            <div class="d-flex gap-3 mt-3" data-aos="fade-up" data-aos-duration="2000">
-                                <a href="assets/img/resume.pdf" target="_blank" class="btn btn-primary fw-bold">View
-                                    Resume</a>
+            <div class="hero-content text-center">
+                <h1>Hi, I'm <span>Md Afjal</span></h1>
+                <p>Front-End Developer crafting modern and responsive web experiences.</p>
 
-                                <a href="#projects" class="btn btn-secondary fw-bold ">Explore Projects</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="hero-buttons">
+                    <a href="assets/img/resume.pdf" target="_blank" class="btn hero-btn-primary">
+                        View Resume
+                    </a>
+                    <a href="#projects" class="btn hero-btn-outline">
+                        Explore Projects
+                    </a>
                 </div>
             </div>
         </section>
+
+
 
         <!-- About me section-->
         <section class="about-me-section" id="about">
@@ -285,8 +285,8 @@
                     <div class="col-lg-6">
                         <div class="project-card p-3" data-aos="fade-up" data-aos-duration="2000">
                             <div class="project-image-wrapper">
-                                <img src="assets/img/horizon.png" class="project-image" alt="Horizon International School" width="100%"
-                                    height="100%">
+                                <img src="assets/img/horizon.png" class="project-image"
+                                    alt="Horizon International School" width="100%" height="100%">
                                 <div class="icon-overlay">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white"
                                         class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
@@ -296,18 +296,20 @@
                                 </div>
                             </div>
                             <h5 class="mt-3">Horizon International School</h5>
-                            <p><p>
-Horizon International School is dedicated to academic excellence and holistic 
-development. With modern facilities, experienced faculty, and a balanced approach 
-to academics and co-curricular activities, the school nurtures confident and 
-future-ready students.
-</p>
+                            <p>
+                            <p>
+                                Horizon International School is dedicated to academic excellence and holistic
+                                development. With modern facilities, experienced faculty, and a balanced approach
+                                to academics and co-curricular activities, the school nurtures confident and
+                                future-ready students.
+                            </p>
 
                             </p>
                             <div class="tech-stack mb-3">
                                 <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Bootstrap</span>
                             </div>
-                            <a href="https://md-afjal-1.github.io/horizon-school/" target="_blank" rel="noopener noreferrer"
+                            <a href="https://md-afjal-1.github.io/horizon-school/" target="_blank"
+                                rel="noopener noreferrer"
                                 class="btn btn-demo w-100 d-flex align-items-center justify-content-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white"
                                     class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
@@ -530,8 +532,8 @@ future-ready students.
                             </a>
 
                             <a href="https://www.linkedin.com/in/md-afjal-33b4b62a8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                                target="_blank" rel="noopener noreferrer" class="contact-item text-decoration-none" data-aos="fade-left"
-                                data-aos-duration="2000">
+                                target="_blank" rel="noopener noreferrer" class="contact-item text-decoration-none"
+                                data-aos="fade-left" data-aos-duration="2000">
                                 <div class="contact-icon"><i class="fa-brands fa-linkedin"></i></div>
                                 <div class="contact-text">
                                     <h6>LinkedIn</h6>
@@ -551,12 +553,14 @@ future-ready students.
 
     <footer class="footer">
         <div class="social-icons">
-            <a class="github" href="https://github.com/Md-Afjal-1" target="_blank" rel="noopener noreferrer" title="Visit GitHub"><i
-                    class="fa-brands fa-github"></i></a>
+            <a class="github" href="https://github.com/Md-Afjal-1" target="_blank" rel="noopener noreferrer"
+                title="Visit GitHub"><i class="fa-brands fa-github"></i></a>
             <a class="github"
                 href="https://www.linkedin.com/in/md-afjal-33b4b62a8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                target="_blank" rel="noopener noreferrer" title="Visit LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a class="github" href="mailto:md9801370@gmail.com" title="Send Email"><i class="fa-solid fa-envelope"></i></a>
+                target="_blank" rel="noopener noreferrer" title="Visit LinkedIn"><i
+                    class="fa-brands fa-linkedin-in"></i></a>
+            <a class="github" href="mailto:md9801370@gmail.com" title="Send Email"><i
+                    class="fa-solid fa-envelope"></i></a>
         </div>
         <div class="footer-text">
             Designed &amp; Developed with <span class="heart">❤️</span> by <span>Md Afjal</span><br>
@@ -630,6 +634,23 @@ future-ready students.
     <script>
         AOS.init();
     </script>
+
+
+ <script>
+    const hero = document.querySelector(".hero-section");
+const glow = document.querySelector(".hero-glow");
+
+hero.addEventListener("mousemove", (e) => {
+    const x = e.clientX;
+    const y = e.clientY;
+
+    glow.style.left = x - 300 + "px";
+    glow.style.top = y - 300 + "px";
+});
+
+ </script>
+
+
 
 </body>
 
