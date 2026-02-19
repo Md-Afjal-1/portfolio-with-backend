@@ -568,6 +568,7 @@
         </div>
     </footer>
 
+
     <script src="assets/js/custom.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
@@ -609,27 +610,7 @@
             }
         });
     </script>
-    <script>
-        const express = require("express");
-        const path = require("path");
-        require("dotenv").config();
 
-        const app = express();
-        const PORT = process.env.PORT || 3000;
-
-        // Static files serve karo
-        app.use("/assets", express.static(path.join(__dirname, "../assets")));
-        app.use(express.static(path.join(__dirname, "../")));
-
-        app.get("/", (req, res) => {
-            res.sendFile(path.join(__dirname, "../index.html"));
-        });
-
-        app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}`);
-        });
-
-    </script>
 
     <script>
         AOS.init();
@@ -650,6 +631,29 @@ hero.addEventListener("mousemove", (e) => {
 
  </script>
 
+<!-- Chat Toggle Button -->
+<div id="chatToggle">
+  <div class="bot-wrapper">
+    <img src="assets/img/chatbot.png" alt="Chatbot" class="bot-img">
+  </div>
+</div>
+
+
+
+<!-- Chatbox -->
+<div id="chatBox">
+  <div id="chatHeader">
+    <span>AI Assistant</span>
+    <button id="closeChat">✖</button>
+  </div>
+
+  <div id="chatMessages"></div>
+
+  <div id="chatInputArea">
+    <input type="text" id="chatInput" placeholder="Type message..." />
+    <button id="sendMessageBtn">Send</button>
+  </div>
+</div>
 
 
 </body>

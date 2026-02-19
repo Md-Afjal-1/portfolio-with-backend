@@ -838,3 +838,168 @@ nav {
         gap: 15px;
     }
 }
+
+#chatToggle {
+  position: fixed;
+  bottom: 110px;
+  right: 30px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+
+  /* Floating animation apply */
+  animation: floatBot 3s ease-in-out infinite;
+}
+
+/* Image inside toggle */
+#chatToggle img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Floating Animation */
+@keyframes floatBot {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Hover effect (scale only, no conflict) */
+#chatToggle:hover {
+  animation-play-state: paused; /* float stop on hover */
+  transform: translateY(-15px) scale(1.1);
+}
+
+/* ================= CHAT BOX ================= */
+
+#chatBox {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 350px;
+  height: 450px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 10000;
+}
+
+#chatHeader {
+  background: #0d6efd;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#chatHeader button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#chatMessages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 14px;
+  color: #000 !important;
+  background-color: #1C2126 !important;
+}
+
+#chatInputArea {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+#chatInput {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+  color: #000 !important;
+  background: #fff !important;
+}
+
+#chatInput::placeholder {
+  color: #555 !important;
+}
+
+#sendMessageBtn {
+  background: #0d6efd;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #chatToggle {
+    width: 60px;
+    height: 60px;
+    bottom: 90px;
+    right: 20px;
+  }
+
+  #chatBox {
+    width: 90%;
+    right: 5%;
+    bottom: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  #chatToggle {
+    width: 55px;
+    height: 55px;
+  }
+}
+#chatToggle {
+  filter: drop-shadow(0 0 8px rgba(0, 162, 255, 0.6));
+  animation: floatBot 3s ease-in-out infinite,
+             glowPulse 2s ease-in-out infinite;
+}
+
+/* Glow animation */
+@keyframes glowPulse {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(0, 162, 255, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(0, 162, 255, 0.9));
+  }
+  100% {
+    filter: drop-shadow(0 0 5px rgba(0, 162, 255, 0.4));
+  }
+}
+.bot-img {
+  animation: blinkEyes 4s infinite;
+}
+
+@keyframes blinkEyes {
+  0%, 95%, 100% {
+    transform: scaleY(1);
+  }
+  97% {
+    transform: scaleY(0.1);
+  }
+}
