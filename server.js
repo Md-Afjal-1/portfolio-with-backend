@@ -3,17 +3,11 @@ const nodemailer = require("nodemailer");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
-const OpenAI = require("openai");
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
-// OpenAI setup
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
 // Middleware
 app.use(cors());
@@ -48,39 +42,10 @@ app.post("/send-email", async (req, res) => {
     });
 
     res.json({ success: true });
+
   } catch (error) {
-    console.error(error);
+    console.error("Email error:", error);
     res.status(500).json({ success: false });
-  }
-});
-
-
-// ================= AI CHAT ROUTE =================
-app.post("/api/chat", async (req, res) => {
-  try {
-    const userMessage = req.body.message;
-
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "system",
-          content: "You are a professional AI assistant on Afjal's portfolio website."
-        },
-        {
-          role: "user",
-          content: userMessage
-        }
-      ],
-    });
-
-    res.json({
-      reply: completion.choices[0].message.content,
-    });
-
-  } catch (error) {
-    console.error("Chatbot error:", error);
-    res.status(500).json({ error: "AI error" });
   }
 });
 
