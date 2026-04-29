@@ -1,3 +1,4 @@
+
 // ================= IMPORTS =================
 
 const express = require("express");
@@ -43,7 +44,49 @@ app.get("/", (req, res) => {
 
 app.get("/test", (req, res) => {
 
-    res.send("Backend Working Successfully");
+    res.send("Backend Working Successfully ✅");
+
+});
+
+
+// ================= EMAIL TRANSPORTER =================
+
+const transporter = nodemailer.createTransport({
+
+    host: "smtp.gmail.com",
+
+    port: 587,
+
+    secure: false,
+
+    requireTLS: true,
+
+    auth: {
+
+        user: "mdafjal123558888@gmail.com",
+
+        // Your REAL Gmail App Password
+        pass: "nmhr pdzm dncc roeb"
+
+    }
+
+});
+
+
+// ================= VERIFY SMTP =================
+
+transporter.verify((error, success) => {
+
+    if (error) {
+
+        console.log("SMTP ERROR:");
+        console.log(error);
+
+    } else {
+
+        console.log("SMTP SERVER READY ✅");
+
+    }
 
 });
 
@@ -55,28 +98,6 @@ app.post("/send", async (req, res) => {
     try {
 
         const { name, email, message } = req.body;
-
-
-        // ================= EMAIL TRANSPORTER =================
-
-        const transporter = nodemailer.createTransport({
-
-            host: "smtp.gmail.com",
-
-            port: 465,
-
-            secure: true,
-
-            auth: {
-
-                user: "mdafjal123558888@gmail.com",
-
-                // Your Gmail App Password
-                pass: "nmhr pdzm dncc roeb"
-
-            }
-
-        });
 
 
         // ================= EMAIL CONTENT =================
@@ -126,10 +147,10 @@ app.post("/send", async (req, res) => {
 
         // ================= SEND EMAIL =================
 
-        await transporter.sendMail(mailOptions);
+        const info = await transporter.sendMail(mailOptions);
 
-
-        console.log("Email Sent Successfully");
+        console.log("EMAIL SENT:");
+        console.log(info.response);
 
 
         res.status(200).json({
@@ -142,7 +163,9 @@ app.post("/send", async (req, res) => {
 
     } catch (error) {
 
-        console.error("FULL ERROR:", error);
+        console.log("FULL EMAIL ERROR:");
+
+        console.log(error);
 
 
         res.status(500).json({
