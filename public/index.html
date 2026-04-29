@@ -444,64 +444,193 @@
             </div>
         </section>
         <!-- Get in touch section -->
-        <section id="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="about-me d-flex flex-column justify-content-center align-items-center">
-                            <h2 class="about-me-head skills-head" data-aos="fade-up" data-aos-duration="2000">Get In
-                                Touch
-                            </h2>
-                            <p data-aos="fade-up" data-aos-duration="2000">Let's discuss your next project or
-                                opportunity.
-                                <br> I'm always excited to work on new
-                                challenges.
-                            </p>
-                        </div>
-                    </div>
+        
+<!-- Get in touch section -->
+<section id="contact">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+
+                <div class="about-me d-flex flex-column justify-content-center align-items-center">
+
+                    <h2 class="about-me-head skills-head"
+                        data-aos="fade-up"
+                        data-aos-duration="2000">
+
+                        Get In Touch
+
+                    </h2>
+
+                    <p data-aos="fade-up" data-aos-duration="2000">
+
+                        Let's discuss your next project or opportunity.
+                        <br>
+                        I'm always excited to work on new challenges.
+
+                    </p>
+
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="contact-form shadow" data-aos="fade-up" data-aos-duration="2000">
-                            <h4 class="mb-4 form-head" data-aos="fade-left" data-aos-duration="2000">
-                                <i class="fa-solid fa-envelope"></i>
-                                Send a Message
-                            </h4>
 
-                            <!-- Form with ID and POST method -->
-                            <form action="https://portfolio-with-backend-rv99.onrender.com/send-email" method="POST">
-                                <div class="mb-3" data-aos="fade-right" data-aos-duration="2000">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="Your full name" required>
-                                </div>
-
-                                <div class="mb-3" data-aos="fade-left" data-aos-duration="2000">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="your.email@example.com" required>
-                                </div>
-
-                                <div class="mb-4" data-aos="fade-right" data-aos-duration="2000">
-                                    <label for="message" class="form-label">Message</label>
-                                    <textarea class="form-control" id="message" name="message" rows="3"
-                                        placeholder="Tell me about your project or just say hello!" required></textarea>
-                                </div>
-
-                                <button type="submit" class="btn btn-custom w-100" data-aos="fade-left"
-                                    data-aos-duration="2000">
-                                    <i class="fa-solid fa-paper-plane"></i>
-                                    Send Message
-                                </button>
-                            </form>
-
-                        </div>
-
-
-                    </div>
-                </div>
             </div>
-        </section>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+
+                <div class="contact-form shadow"
+                    data-aos="fade-up"
+                    data-aos-duration="2000">
+
+                    <h4 class="mb-4 form-head"
+                        data-aos="fade-left"
+                        data-aos-duration="2000">
+
+                        <i class="fa-solid fa-envelope"></i>
+                        Send a Message
+
+                    </h4>
+
+                    <!-- CONTACT FORM -->
+                    <form id="contactForm">
+
+                        <div class="mb-3"
+                            data-aos="fade-right"
+                            data-aos-duration="2000">
+
+                            <label for="name" class="form-label">
+                                Name
+                            </label>
+
+                            <input type="text"
+                                class="form-control"
+                                id="name"
+                                name="name"
+                                placeholder="Your full name"
+                                required>
+
+                        </div>
+
+                        <div class="mb-3"
+                            data-aos="fade-left"
+                            data-aos-duration="2000">
+
+                            <label for="email" class="form-label">
+                                Email
+                            </label>
+
+                            <input type="email"
+                                class="form-control"
+                                id="email"
+                                name="email"
+                                placeholder="your.email@example.com"
+                                required>
+
+                        </div>
+
+                        <div class="mb-4"
+                            data-aos="fade-right"
+                            data-aos-duration="2000">
+
+                            <label for="message" class="form-label">
+                                Message
+                            </label>
+
+                            <textarea class="form-control"
+                                id="message"
+                                name="message"
+                                rows="3"
+                                placeholder="Tell me about your project or just say hello!"
+                                required></textarea>
+
+                        </div>
+
+                        <button type="submit"
+                            class="btn btn-custom w-100"
+                            data-aos="fade-left"
+                            data-aos-duration="2000">
+
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Send Message
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CONTACT FORM SCRIPT -->
+
+<script>
+
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const formData = {
+
+        name: form.name.value,
+
+        email: form.email.value,
+
+        message: form.message.value
+
+    };
+
+    try {
+
+        const response = await fetch("https://portfolio-with-backend-rv99.onrender.com/send", {
+
+            method: "POST",
+
+            headers: {
+
+                "Content-Type": "application/json"
+
+            },
+
+            body: JSON.stringify(formData)
+
+        });
+
+
+        const data = await response.json();
+
+
+        if (data.success) {
+
+            alert("Message sent successfully ✅");
+
+            form.reset();
+
+        } else {
+
+            alert(data.error || "Failed to send message ❌");
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Server Error ❌");
+
+    }
+
+});
+
+</script>
+
+
         <!-- contact section -->
         <section>
             <div class="container">
