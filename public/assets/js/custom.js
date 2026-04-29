@@ -123,3 +123,64 @@ document.getElementById("chatToggle").addEventListener("click", function () {
   }, 400);
 });
 
+// ================= CONTACT FORM =================
+
+const contactForm = document.getElementById("contactForm");
+
+if (contactForm) {
+
+  contactForm.addEventListener("submit", async function (e) {
+
+    e.preventDefault();
+
+    const formData = {
+
+      name: document.getElementById("name").value,
+
+      email: document.getElementById("email").value,
+
+      message: document.getElementById("message").value
+
+    };
+
+    try {
+
+      const response = await fetch("https://portfolio-with-backend-rv99.onrender.com/send", {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify(formData)
+
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+
+        alert("Message sent successfully ✅");
+
+        contactForm.reset();
+
+      } else {
+
+        alert("Failed to send message ❌");
+
+        console.log(data);
+
+      }
+
+    } catch (error) {
+
+      console.error("FORM ERROR:", error);
+
+      alert("Server Error ❌");
+
+    }
+
+  });
+
+}
