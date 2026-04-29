@@ -1,10 +1,13 @@
-
+// ================= IMPORTS =================
 
 const express = require("express");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const path = require("path");
+
+
+// ================= APP =================
 
 const app = express();
 
@@ -13,7 +16,9 @@ const PORT = process.env.PORT || 5000;
 
 // ================= MIDDLEWARE =================
 
-app.use(cors());
+app.use(cors({
+    origin: "*"
+}));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -34,6 +39,15 @@ app.get("/", (req, res) => {
 });
 
 
+// ================= TEST ROUTE =================
+
+app.get("/test", (req, res) => {
+
+    res.send("Backend Working Successfully");
+
+});
+
+
 // ================= CONTACT FORM ROUTE =================
 
 app.post("/send", async (req, res) => {
@@ -42,17 +56,22 @@ app.post("/send", async (req, res) => {
 
         const { name, email, message } = req.body;
 
-        // Gmail transporter
+
+        // ================= EMAIL TRANSPORTER =================
 
         const transporter = nodemailer.createTransport({
 
-            service: "gmail",
+            host: "smtp.gmail.com",
+
+            port: 465,
+
+            secure: true,
 
             auth: {
 
                 user: "mdafjal123558888@gmail.com",
 
-                // Replace with your REAL Gmail App Password
+                // Your Gmail App Password
                 pass: "nmhr pdzm dncc roeb"
 
             }
@@ -60,7 +79,7 @@ app.post("/send", async (req, res) => {
         });
 
 
-        // Mail content
+        // ================= EMAIL CONTENT =================
 
         const mailOptions = {
 
@@ -70,7 +89,7 @@ app.post("/send", async (req, res) => {
 
             to: "mdafjal123558888@gmail.com",
 
-            subject: `New Contact Form Message From ${name}`,
+            subject: `New Portfolio Message From ${name}`,
 
             html: `
 
@@ -105,31 +124,32 @@ app.post("/send", async (req, res) => {
         };
 
 
-        // Send mail
+        // ================= SEND EMAIL =================
 
         await transporter.sendMail(mailOptions);
 
 
-        console.log("Email sent successfully");
+        console.log("Email Sent Successfully");
 
 
         res.status(200).json({
 
             success: true,
 
-            message: "Email sent successfully"
+            message: "Email Sent Successfully"
 
         });
 
     } catch (error) {
 
-        console.error("Email Error:", error);
+        console.error("FULL ERROR:", error);
+
 
         res.status(500).json({
 
             success: false,
 
-            message: "Failed to send email"
+            error: error.message
 
         });
 
